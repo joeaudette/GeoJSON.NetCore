@@ -1,0 +1,25 @@
+﻿{
+  "version": "1.0.0-rc20161208",
+  "description": "a port of GeoJSON.Net to .NET Core",
+  "authors": [ "Joerg Batterman" ],
+  "packOptions": {
+    "owners": [ "Source Tree Solutions" ],
+    "tags": [ "geojson", "netcore" ],
+    "projectUrl": "https://github.com/GeoJSON-Net/GeoJSON.Net",
+    "licenseUrl": "https://github.com/GeoJSON-Net/GeoJSON.Net/blob/master/LICENSE.md",
+
+    "requireLicenseAcceptance": false,
+    "releaseNotes": ""
+  },
+
+  "dependencies": {
+    "NETStandard.Library": "1.6.1",
+    "Newtonsoft.Json": "9.0.1"
+  },
+
+  "frameworks": {
+    "netstandard1.6": {
+      "imports": "dnxcore50"
+    }
+  }
+}
