@@ -59,7 +59,7 @@ namespace GeoJSON.Net.Converters
 
             var crsType = token.Value<string>();
 
-            if (string.Equals("name", crsType, StringComparison.OrdinalIgnoreCase))
+            if (string.Equals("name", crsType, StringComparison.OrdinalIgnoreCase) || string.Equals("epsg", crsType, StringComparison.OrdinalIgnoreCase)) 
             {
                 JObject properties = null;
                 if (jObject.TryGetValue("properties", out token))
@@ -69,8 +69,16 @@ namespace GeoJSON.Net.Converters
 
                 if (properties != null)
                 {
-                    var target = new NamedCRS(properties["name"].ToString());
-                    serializer.Populate(jObject.CreateReader(), target);
+                    NamedCRS target;
+                    if (null != properties["name"])
+                    {
+                        target = new NamedCRS(properties["name"].ToString());
+                    }
+                    else
+                    {
+                        target = new NamedCRS(properties["code"].ToString());
+                    }
+                    //serializer.Populate(jObject.CreateReader(), target);
                     return target;
                 }
             }
